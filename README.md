@@ -7,7 +7,7 @@ This is a console application that provides various commands to display informat
 - `pwd`: Get the current working directory.
 - `ls`: List the files in the current directory.
 - `ip`: Get the current IP address.
-- `rmte`: Use the rmte.py script.
+- `rmte`: This is a custom script developed to webscrape.
 - `internet speed`: Check the internet speed.
 - `search`: Use the search engine.
 - `download`: Download a file from a URL.
