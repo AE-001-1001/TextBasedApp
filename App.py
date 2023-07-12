@@ -2,9 +2,8 @@ import os
 import subprocess
 import shutil
 import requests
-from colorama import Fore, Back, Style
-import datetime
-from time import sleep,strftime
+from colorama import Fore, Style
+
 
 
 # this is going to be a little console app to display the knowledge 
@@ -25,21 +24,18 @@ def clean_json() -> None:
     print(f"{Fore.GREEN}{'':^105}Cleaned the json_files folder{Style.RESET_ALL}")
     return None
 
+def use_clean_logs() -> None:
+    file = "clean_logs.py"
+    if os.path.exists(file):
+        os.system("clean_logs.py")
+    else:
+        download("https://gist.githubusercontent.com/AE-001-1001/aaf9d48cc8b55ded020682cc92f2d835/raw/ec8b6f7f38d138ef00f9e19ae0257a5f0a09b115/clean_logs.py")
+    return 0
+
+
 def clean_logs() -> None:
     """Cleans the logs folder"""
-    # going to change directories
-    os.chdir("logs")
-    # get the current working directory
-    cwd = os.getcwd()
-    # get the list of files in the current working directory
-    files = os.listdir(cwd)
-    for f in files:
-        if f.endswith(".log"):
-            # delete the file
-            os.remove(f)
-    # change the directory back to the original directory
-    os.chdir("..")
-    print(f"{Fore.GREEN}{'':^105}Cleaned the logs folder{Style.RESET_ALL}")
+    use_clean_logs()
     return None
 
 def clean_screen() -> str:
@@ -79,6 +75,8 @@ def download(url:str) -> str:
     with requests.get(url, stream=True) as r:
         with open(local_filename, 'wb') as f:
             shutil.copyfileobj(r.raw, f)
+
+    print(f"Downloaded {'':^223}{local_filename} from github")
     return local_filename
 
 def use_search_engine() -> str:
@@ -88,7 +86,6 @@ def use_search_engine() -> str:
         os.system("ddgsred.py")
     else:
         download("https://gist.githubusercontent.com/AE-001-1001/22db01a2d36654cce3fde4a95be7e94e/raw/85c748c37fa9b7b44dc0c74ee4042ab283525fbe/ddgsred.py") 
-        print(f"{'':^223}Downloaded {file} from github")
     return 0
 
 def use_rmte() -> str:
@@ -98,32 +95,15 @@ def use_rmte() -> str:
         os.system("Rmte.py")
     else:
         download("https://gist.githubusercontent.com/AE-001-1001/a43375e8cb8c7ebb17b110d60d7ccaa6/raw/4c74c6658aa3cf980ec3a7ad916c5772a0b58af3/Rmte.py")
-        print(f"Downloaded {'':^223}{file} from github")
     return 0
 
 def internet_speed():
     """Check the internet speed"""
-    # check if the user has speedtest installed
-    # if the user has speedtest installed
-    if os.path.exists("speedtest.exe"):
-        # run the speedtest
-        os.system("speedtest.exe")
-        if os.path.exists("speedtest.exe"):
-            try:
-                # delete the zip file
-                os.remove("ookla-speedtest-1.2.0-win64.zip")
-                os.remove("speedtest.md")
-            except:
-                pass
-    # if already installed don't ask the user if they want to install speedtest
+    file = "internetspeed.py"
+    if os.path.exists(file):
+        os.system(file)
     else:
-        # download the speedtest
-        # taken from my GUI that I made
-        os.system("curl -O https://install.speedtest.net/app/cli/ookla-speedtest-1.2.0-win64.zip")
-        # unzip the speedtest windows 64 bit
-        os.system("tar -xvf ookla-speedtest-1.2.0-win64.zip")
-        # run the speedtest
-        os.system("speedtest.exe")
+        download("https://gist.githubusercontent.com/AE-001-1001/08cd473eb102651df979c34f4e137e37/raw/d6d6271e76d837aaf7bbdbb516a38fd738aa67b5/internetspeed.py")
     return 0
 
 def exit_program() -> str:
@@ -137,7 +117,6 @@ def use_help_menu() -> str:
         os.system("help_menu.py")
     else:
         download("https://gist.githubusercontent.com/AE-001-1001/66a580db9def1dc7879cf107a7006476/raw/97338d8abbb74b42b156c01c124e3d1a32f0abd4/help_menu.py")
-        print(f"Downloaded {'':^223}{file} from github")
     return 0
 
 def get_user_input() -> None:
