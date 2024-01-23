@@ -1,5 +1,4 @@
-# Console Knowledge Display
-
+# Command Line Tool 
 This is a console application that provides various commands to display information and perform actions.  
 Also uses github gists, to reduce the amount of lines in the script/console app.
 
